@@ -1,0 +1,4 @@
+---
+# tasks file for roles/create-container
+
+- import_tasks: create.yml

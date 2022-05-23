@@ -1,0 +1,9 @@
+---
+# Create container tasks
+
+- name: Create 1st ubuntu container from the image {{ ubuntu_image }}
+  docker_container:
+    name: "{{ container_common_name }}_{{ item }}"
+    image: "{{ ubuntu_image }}"
+    state: started
+  with_sequence: count={{ number_of_containers }}

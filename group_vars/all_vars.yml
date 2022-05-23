@@ -1,0 +1,12 @@
+---
+# Variable that cut across all
+
+# Docker container details for testing
+number_of_containers: 4
+container_common_name: docker
+ubuntu_image: ubuntu-nginx-ansible-host:latest
+
+# Copy app from localhost to containers
+# Developer to change this accordingly while developing code
+git_repo: mysql_using_python
+script_to_run: client-for-ansible-hosts-test.py

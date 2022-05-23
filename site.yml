@@ -1,0 +1,28 @@
+---
+# Run code in Docker containers
+- name: Run test on docker containers
+  hosts: localhost
+  gather_facts: false
+  # become: yes
+
+  # vars:
+  #   ansible_user: root
+  #   ansible_ssh_pass: root
+  #   ansible_become_pass: root
+
+  tasks:
+    - name: Calling on the variables in group_vars directory
+      include_vars:
+        dir: group_vars
+
+    - include_role:
+        name: create-container
+      ignore_errors: yes
+
+    - include_role:
+        name: run-container
+      ignore_errors: yes
+
+    - include_role:
+        name: destroy-container
+      ignore_errors: yes

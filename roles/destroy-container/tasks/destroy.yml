@@ -1,0 +1,15 @@
+---
+# Destroy container tasks
+# This part can be optimized using a loop!
+- name: Stop docker containers
+  docker_container:
+    name: "{{ container_common_name }}_{{ item }}"
+    state: stopped
+  with_sequence: count={{ number_of_containers }}
+
+- name: Remove docker containers
+  docker_container:
+    name: "{{ container_common_name }}_{{ item }}"
+    state: absent
+  with_sequence: count={{ number_of_containers }}
+
